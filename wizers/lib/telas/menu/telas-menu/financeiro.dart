@@ -3,6 +3,7 @@ import 'package:wizers/Components/header.dart';
 import 'package:wizers/Components/transaction_card.dart';
 import 'package:wizers/Components/new_transition.dart';
 import '../../../constants.dart';
+import '../../../constants.dart';
 
 class Financeiro_Home extends StatefulWidget {
   @override
@@ -15,14 +16,14 @@ class _Financeiro_HomeState extends State<Financeiro_Home> {
 
   void _addTransaction() {
     setState(() {
-      _height = .8;
+      _height = .08;
       _opacity = 1;
     });
   }
 
   void _done() {
     setState(() {
-      _height = .55;
+      _height = 0.5;
       _opacity = .9;
     });
   }
@@ -30,10 +31,12 @@ class _Financeiro_HomeState extends State<Financeiro_Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white.withOpacity(.9),
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: wizeRoxo,
         elevation: 0,
+        backgroundColor: wizeRoxo,
+        title: Text("Financeiro"),
+        centerTitle: true,
         iconTheme: IconThemeData(
           color: wizeCinza, //change your color here
         ),

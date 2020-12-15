@@ -9,7 +9,7 @@ class Dropdown extends StatefulWidget {
 }
 
 class _DropdownState extends State<Dropdown> {
-  String dropdownValue = 'One';
+  String dropdownValue = 'Escolha';
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class _DropdownState extends State<Dropdown> {
           dropdownValue = newValue;
         });
       },
-      items: <String>['One', 'Two', 'Free', 'Four']
+      items: <String>['Escolha', 'Artes', 'Educação', 'Moda']
           .map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,

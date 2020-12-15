@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wizers/providers/transactions.dart';
 import 'package:wizers/telas/onboarding.dart';
+import 'package:wizers/telas/splashscreen.dart';
+
+import 'constants.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,8 +19,11 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
           title: 'Wize App',
           debugShowCheckedModeBanner: false,
-          theme:
-              ThemeData(visualDensity: VisualDensity.adaptivePlatformDensity),
+          theme: ThemeData(
+              primaryColor: wizeRoxo,
+              primarySwatch: Colors.purple,
+              fontFamily: 'Glacial',
+              visualDensity: VisualDensity.adaptivePlatformDensity),
           home: Onboarding()),
     );
   }

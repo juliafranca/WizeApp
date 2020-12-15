@@ -25,7 +25,7 @@ class _TransactionCardState extends State<TransactionCard> {
           duration: Duration(seconds: 1),
           curve: Curves.fastOutSlowIn,
           width: mediaQuery.size.width * 0.94,
-          height: mediaQuery.size.height * 0.45,
+          height: mediaQuery.size.height * widget.height,
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(

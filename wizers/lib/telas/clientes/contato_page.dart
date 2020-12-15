@@ -25,7 +25,7 @@ class _ContatoPageState extends State<ContatoPage> {
     super.initState();
 
     if (widget.contato == null) {
-      _editaContato = Contato(0, '', '', null);
+      _editaContato = Contato(null, '', '', null);
     } else {
       _editaContato = Contato.fromMap(widget.contato.toMap());
       _nomeController.text = _editaContato.nome;
