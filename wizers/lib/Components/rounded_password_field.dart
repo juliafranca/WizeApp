@@ -24,24 +24,23 @@ class _RoundedPasswordFieldState extends State<RoundedPasswordField> {
   @override
   Widget build(BuildContext context) {
     return TextFieldContainer(
-        child: TextField(
-      style: TextStyle(color: wizeCinza),
-      obscureText: !_showPassword,
-      onChanged: widget.onChanged,
-      decoration: InputDecoration(
-        hintText: "senha",
-        hintStyle: TextStyle(color: wizeCinza),
-        border: InputBorder.none,
-        icon: Icon(Icons.lock, color: wizeCinza),
-        suffixIcon: GestureDetector(
-          onTap: () {
-            _togglevisibility();
-          },
-          child: Icon(
-              _showPassword ? Icons.visibility : Icons
-                                          .visibility_off, color: Colors.white,
+      child: TextField(
+        style: TextStyle(color: wizeCinza),
+        obscureText: !_showPassword,
+        onChanged: widget.onChanged,
+        decoration: InputDecoration(
+          hintText: "senha",
+          hintStyle: TextStyle(color: wizeCinza),
+          border: InputBorder.none,
+          icon: Icon(Icons.lock, color: wizeCinza),
+          suffixIcon: GestureDetector(
+            onTap: () {
+              _togglevisibility();
+            },
+            child: Icon(
+              _showPassword ? Icons.visibility : Icons.visibility_off,
+              color: Colors.white,
             ),
-            
           ),
         ),
       ),

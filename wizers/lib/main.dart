@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wizers/providers/transactions.dart';
 import 'package:wizers/telas/onboarding.dart';
-import 'package:wizers/telas/splashscreen.dart';
 
 import 'constants.dart';
 

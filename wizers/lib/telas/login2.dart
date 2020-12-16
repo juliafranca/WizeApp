@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:wizers/Components/rounded_button_cinza.dart';
-import 'package:wizers/Components/rounded_input_file.dart';
-import 'package:wizers/Components/rounded_password_field.dart';
-import '../constants.dart';
-import 'menu/menu_principal.dart';
 import 'package:http/http.dart' as http;
 
-class Login extends StatefulWidget {
+import 'menu/menu_principal.dart';
+
+class LoginSecundario extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _LoginSecundarioState createState() => _LoginSecundarioState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginSecundarioState extends State<LoginSecundario> {
   TextEditingController loginController = TextEditingController();
   TextEditingController senhaController = TextEditingController();
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -28,16 +25,18 @@ class _LoginState extends State<Login> {
     });
   }
 
-  void _authenticate(String _usuario, String _senha) async {
+  authenticate(String _usuario, String _senha) async {
     String myurl = "https://postecnico.herokuapp.com/checkUser";
-    http.post(myurl,
-        headers: {"Content-Type": "application/json"},
-        body: {"usuario": _usuario, "senha": _senha}).then((response) {
+
+    http.post(myurl, headers: {
+      'Accept': 'application/json',
+      'authorization': 'pass your key(optional)'
+    }, body: {
+      "usuario": _usuario,
+      "senha": _senha
+    }).then((response) {
       print(response.statusCode);
       print(response.body);
-      if (response == true) {
-        _abrirHome();
-      }
     });
   }
 
@@ -50,21 +49,27 @@ class _LoginState extends State<Login> {
     setState(() {
       String _usuario = loginController.text;
       String _senha = senhaController.text;
-      _authenticate(_usuario, _senha);
+      if (_usuario == true && _senha == true) {
+        _infoText = " Bem vinda (o) $_usuario";
+        _abrirHome();
+      } else {
+        _infoText = "Usuário ou Senha Incorretos. Tente novamente";
+        loginController.text = "";
+        senhaController.text = "";
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: wizeRoxo,
         appBar: AppBar(
-            title: Text("WIZE"),
-            elevation: 0,
-            actions: [
-              IconButton(icon: Icon(Icons.refresh), onPressed: _resetFields)
-            ],
-            backgroundColor: wizeRoxo),
+          title: Text("Minha Agenda"),
+          actions: [
+            IconButton(icon: Icon(Icons.refresh), onPressed: _resetFields)
+          ],
+          backgroundColor: Colors.purple[100],
+        ),
         body: SingleChildScrollView(
           padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
           child: Form(
@@ -72,24 +77,23 @@ class _LoginState extends State<Login> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Image.asset(
-                  "images/logo1.png",
-                  height: 100,
-                  width: 100,
-                ),
+                Image.asset("images/bgm.png"),
                 Padding(
                   padding: EdgeInsets.all(20),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        contentPadding: EdgeInsets.all(16),
+                        border: OutlineInputBorder(),
                         labelText: "Login",
-                        labelStyle: TextStyle(fontSize: 20, color: wizeCinza)),
+                        labelStyle: TextStyle(
+                          fontFamily: 'GeoSans',
+                          fontSize: 20,
+                        )),
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.black, fontSize: 20.0),
+                    style: TextStyle(
+                        fontFamily: 'GeoSans',
+                        color: Colors.black,
+                        fontSize: 20.0),
                     controller: loginController,
                     validator: (value) {
                       if (value.isEmpty) {
@@ -104,15 +108,17 @@ class _LoginState extends State<Login> {
                       keyboardType: TextInputType.text,
                       obscureText: true,
                       decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          contentPadding: EdgeInsets.all(16),
+                          border: OutlineInputBorder(),
                           labelText: "Senha",
-                          labelStyle:
-                              TextStyle(fontSize: 20, color: wizeCinza)),
+                          labelStyle: TextStyle(
+                            fontFamily: 'GeoSans',
+                            fontSize: 20,
+                          )),
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.black, fontSize: 20.0),
+                      style: TextStyle(
+                          fontFamily: 'GeoSans',
+                          color: Colors.black,
+                          fontSize: 20.0),
                       controller: senhaController,
                       validator: (value) {
                         if (value.isEmpty) {
@@ -125,14 +131,14 @@ class _LoginState extends State<Login> {
                     child: RaisedButton(
                       child: Text(
                         "Entrar",
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(fontFamily: 'GeoSans', fontSize: 18),
                       ),
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
                           _validarLogin();
                         }
                       },
-                      color: wizeCinza,
+                      color: Colors.purple[200],
                       textColor: Colors.white,
                       padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                       splashColor: Colors.grey,

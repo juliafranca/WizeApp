@@ -27,16 +27,16 @@ dependencies:
   carousel_slider: ^2.3.1
   charts_flutter: ^0.9.0
   cupertino_icons: ^1.0.0
+  flutter_linkify: ^4.0.2
+  http: ^0.12.2
   image_picker: ^0.6.7+14
   intl: ^0.16.1
-  flutter_linkify: ^4.0.2
   path_provider: ^1.6.18
   provider: ^4.3.1
+  splashscreen: ^1.2.0
   sqflite: ^1.1.7+3
   table_calendar: ^2.0.1
   url_launcher: ^5.7.10
-  splashscreen: ^1.2.0
-  
 
 dev_dependencies:
   flutter_test:

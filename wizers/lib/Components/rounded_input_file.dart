@@ -12,6 +12,7 @@ class RoundedInputField extends StatelessWidget {
     this.hintText,
     this.icon = Icons.person,
     this.onChanged,
+    TextEditingController controller,
   }) : super(key: key);
 
   @override
@@ -32,4 +33,3 @@ class RoundedInputField extends StatelessWidget {
     );
   }
 }
-
